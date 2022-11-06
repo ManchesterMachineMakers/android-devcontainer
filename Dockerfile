@@ -38,7 +38,7 @@ RUN bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/
     && sed -i -e 's/OSH_THEME=.*/OSH_THEME="simple"/g' /home/ftc16221/.bashrc
 
 # install sdkman, java, kotlin & gradle
-ADD install-sdk.sh /home/ftc16221/container-scripts/install-sdk.sh
+COPY install-sdk.sh /home/ftc16221/container-scripts/install-sdk.sh
 RUN chmod +x $HOME/container-scripts/install-sdk.sh
 RUN $HOME/container-scripts/install-sdk.sh
 
