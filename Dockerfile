@@ -20,7 +20,10 @@ RUN apt-get update \
         unzip \
         wget \
         zip \
+        bash \
     && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/*
+
+SHELL ["/bin/bash", "-c"]
 
 # non-root user
 RUN useradd \
@@ -37,11 +40,11 @@ RUN bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/
 # install sdkman, java, kotlin & gradle
 RUN curl -s "https://get.sdkman.io" | bash
 RUN chmod a+x "$HOME/.sdkman/bin/sdkman-init.sh"
-RUN "$HOME/.sdkman/bin/sdkman-init.sh"
+RUN source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 RUN sdk install java 17-open
 RUN sdk install gradle
-RUN sdk insrall kotlin
+RUN sdk install kotlin
 
 # install android sdk
 ENV ANDROID_HOME=/opt/android-sdk-linux
