@@ -34,6 +34,15 @@ USER ftc16221
 RUN bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)" \
     && sed -i -e 's/OSH_THEME=.*/OSH_THEME="simple"/g' /home/ftc16221/.bashrc
 
+# install sdkman, java, kotlin & gradle
+RUN curl -s "https://get.sdkman.io" | bash
+RUN chmod a+x "$HOME/.sdkman/bin/sdkman-init.sh"
+RUN source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+RUN sdk install java 17-open
+RUN sdk install gradle
+RUN sdk insrall kotlin
+
 # install android sdk
 ENV ANDROID_HOME=/opt/android-sdk-linux
 ENV ANDROID_SDK_ROOT=$ANDROID_HOME
@@ -55,7 +64,6 @@ RUN apt-get update \
         libsqlite3-0 \
         libstdc++6 \
         locales \
-        openjdk-11-jdk \
         ruby-bundler \
         ruby-full \
         software-properties-common \
