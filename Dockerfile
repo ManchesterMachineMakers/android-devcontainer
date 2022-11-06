@@ -38,13 +38,9 @@ RUN bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/
     && sed -i -e 's/OSH_THEME=.*/OSH_THEME="simple"/g' /home/ftc16221/.bashrc
 
 # install sdkman, java, kotlin & gradle
-RUN curl -s "https://get.sdkman.io" | bash
-RUN chmod a+x "$HOME/.sdkman/bin/sdkman-init.sh"
-RUN source "$HOME/.sdkman/bin/sdkman-init.sh"
-
-RUN sdk install java 17-open
-RUN sdk install gradle
-RUN sdk install kotlin
+ADD install-sdk.sh /scripts/install-sdk.sh
+RUN chmod +x /scripts/install-sdk.sh
+RUN /scripts/install-sdk.sh
 
 # install android sdk
 ENV ANDROID_HOME=/opt/android-sdk-linux
