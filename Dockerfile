@@ -21,6 +21,7 @@ RUN apt-get update \
         wget \
         zip \
         bash \
+        openjdk-17-jdk \
     && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/*
 
 SHELL ["/bin/bash", "-c"]
