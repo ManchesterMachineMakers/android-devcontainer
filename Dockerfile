@@ -39,6 +39,7 @@ RUN bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/
 
 # install sdkman, java, kotlin & gradle
 COPY install-sdk.sh /home/ftc16221/container-scripts/install-sdk.sh
+RUN sudo chown ftc16221:ftc16221 $HOME/container-scripts/install-sdk.sh
 RUN chmod +x $HOME/container-scripts/install-sdk.sh
 RUN $HOME/container-scripts/install-sdk.sh
 
