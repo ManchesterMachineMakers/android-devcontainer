@@ -21,10 +21,11 @@ RUN apt-get update \
         wget \
         zip \
         bash \
+        zsh \
         openjdk-17-jdk \
     && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/*
 
-SHELL ["/bin/bash", "-c"]
+SHELL ["/usr/bin/zsh", "-c"]
 
 # non-root user
 RUN useradd \
@@ -35,8 +36,7 @@ RUN useradd \
     && sed -i -e 's/%sudo.*/%sudo\tALL=(ALL:ALL)\tNOPASSWD:ALL/g' /etc/sudoers \
     && touch /home/ftc16221/.sudo_as_admin_successful
 USER ftc16221
-RUN bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)" \
-    && sed -i -e 's/OSH_THEME=.*/OSH_THEME="simple"/g' /home/ftc16221/.bashrc
+RUN sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # install sdkman, java, kotlin, kotlin language server & gradle
 COPY install-sdk.sh /home/ftc16221/container-scripts/install-sdk.sh
