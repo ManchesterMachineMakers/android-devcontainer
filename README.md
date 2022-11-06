@@ -1,16 +1,17 @@
-# Devcontainer with Android SDK and Flutter SDK
-Pre-installed Android SDK and Flutter SDK for [Devcontainer](https://code.visualstudio.com/docs/remote/containers).
-Images are available at [Docker Hub](https://hub.docker.com/repository/docker/sambyeol/flutter-devcontainer).
+# Devcontainer with the Android SDK
+Pre-installed Android SDK for [Devcontainer](https://code.visualstudio.com/docs/remote/containers).
+Images are available at [GHCR](https://github.com/ManchesterMachineMakers/android-devcontainer/pkgs/container/android-devcontainer).
+This is used in our [robot controller code](https://github.com/ManchesterMachineMakers/RobotController).
 
 ## Quickstart
 Make a devcontainer setting file at `.devcontainer/devcontainer.json` in your project.
 ```json
 {
-    "image": "sambyeol/flutter-devcontainer",
+    "image": "ghcr.io/manchestermachinemakers/android-devcontainer:main",
     "runArgs": [ "--init" ],
     "extensions": [
-        "dart-code.dart-code",
-        "dart-code.flutter"
+        "vscjava.vscode-java-pack",
+        "fwcd.kotlin"
     ],
 }
 ```
