@@ -37,7 +37,7 @@ RUN bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/
 # install sdkman, java, kotlin & gradle
 RUN curl -s "https://get.sdkman.io" | bash
 RUN chmod a+x "$HOME/.sdkman/bin/sdkman-init.sh"
-RUN source "$HOME/.sdkman/bin/sdkman-init.sh"
+RUN "$HOME/.sdkman/bin/sdkman-init.sh"
 
 RUN sdk install java 17-open
 RUN sdk install gradle
